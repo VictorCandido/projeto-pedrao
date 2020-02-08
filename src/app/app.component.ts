@@ -10,11 +10,13 @@ import { PoMenuItem } from '@portinari/portinari-ui';
 export class AppComponent {
 
   readonly menus: Array<PoMenuItem> = [
-    { label: 'Home', action: this.onClick.bind(this) }
+    { label: 'Home', link: 'home', icon: 'po-icon po-icon-home' },
+    { label: 'Painel de Controle', icon: 'po-icon po-icon-settings', subItems: [
+      { label: 'Categorias', subItems: [
+        { label: 'Cadastrar nova categoria', link: 'categorias/cadastrar' },
+        { label: 'Listar categorias', link: 'categorias/listar' },
+      ]},
+    ]},
   ];
-
-  private onClick() {
-    alert('Clicked in menu item')
-  }
 
 }
