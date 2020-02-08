@@ -1,3 +1,4 @@
+import { PoModule } from '@portinari/portinari-ui';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -10,7 +11,8 @@ import { CadastrarCategoriaComponent } from './cadastrar-categoria/cadastrar-cat
   declarations: [ListarCategoriaComponent, CadastrarCategoriaComponent],
   imports: [
     CommonModule,
-    CategoriasRoutingModule
+    CategoriasRoutingModule,
+    PoModule
   ]
 })
 export class CategoriasModule { }

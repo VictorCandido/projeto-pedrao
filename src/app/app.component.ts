@@ -16,6 +16,10 @@ export class AppComponent {
         { label: 'Cadastrar nova categoria', link: 'categorias/cadastrar' },
         { label: 'Listar categorias', link: 'categorias/listar' },
       ]},
+      { label: 'Produtos', subItems: [
+        { label: 'Cadastrar novo produto', link: 'produtos/cadastrar' },
+        { label: 'Listar produtos', link: 'produtos/listar' },
+      ]},
     ]},
   ];
 
