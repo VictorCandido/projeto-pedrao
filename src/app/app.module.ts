@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +19,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     BrowserModule,
     AppRoutingModule,
     PoModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot([]),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

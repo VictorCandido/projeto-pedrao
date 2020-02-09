@@ -1,8 +1,13 @@
-<div class="po-wrapper">
-  <!-- <po-toolbar p-title="Cadastro de Produtos"></po-toolbar> -->
-  <custom-toolbar></custom-toolbar>
+<po-navbar
+  [p-menu]="menuLateral"
+  p-shadow=true
+  [p-items]="navbarItems"
+></po-navbar>
 
-  <po-menu [p-menus]="menus"></po-menu>
+<div class="po-wrapper">
+  <!-- <custom-toolbar></custom-toolbar> -->
+
+  <po-menu #menuLateral [p-menus]="menus"></po-menu>
 
   <router-outlet></router-outlet>
 </div>
