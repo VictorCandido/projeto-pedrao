@@ -19,7 +19,7 @@ export class ListarProdutosComponent implements OnInit {
 
     this.items = [
       { id: 1, id_categoria: 'CATEGORIA 1', nome_produto: 'PRODUTO 1' },
-      { id: 2, id_categoria: 'CATEGORIA 2', nome_produto: 'PRODUTO 2'},
+      { id: 2, id_categoria: 'CATEGORIA 2', nome_produto: 'PRODUTO 2' },
       { id: 3, id_categoria: 'CATEGORIA 3', nome_produto: 'PRODUTO 3' },
       { id: 4, id_categoria: 'CATEGORIA 4', nome_produto: 'PRODUTO 4' },
       { id: 5, id_categoria: 'CATEGORIA 5', nome_produto: 'PRODUTO 5' },
