@@ -1,16 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --color-primary: #fff;
+  --color-primary: #01579b;
   /* --color-secondary: green; */
   /* --color-tertiary: blue; */
 
   /* MENU LATERAL */
-  --color-menu-color-menu-collapse-icon: var(--color-primary);
-  --color-menu-color-menu-item-text: var(--color-primary);
-  --color-menu-color-menu-item-selected: var(--color-primary);
-  --color-menu-color-menu-sub-item-text: var(--color-primary);
-  --color-menu-color-menu-sub-item-selected: var(--color-primary);
-  --color-menu-color-menu-responsive: var(--color-primary);
+  --color-menu-color-menu-collapse-icon: #fff;
+  --color-menu-color-menu-item-text: #fff;
+  --color-menu-color-menu-item-selected: #fff;
+  --color-menu-color-menu-sub-item-text: #fff;
+  --color-menu-color-menu-sub-item-selected: #fff;
+  --color-menu-color-menu-responsive: #fff;
 
   --color-menu-background-color-item-grouper-up-hover: #616161;
   --color-menu-background-color-item-hover: #212121;
@@ -25,9 +25,13 @@
   --color-page-background-color-page: #f5f5f5;
 
   /* NAVBAR */
+  --color-navbar-item-color: #fff;
   --color-navbar-color: #424242;
-  --color-navbar-item-color-selected: var(--color-primary);
+  --color-navbar-item-color-selected: #fff;
   --color-navbar-item-color-shadow-selected: #01579b;
+
+  /* TABLE */
+
 }
 po-navbar~.po-wrapper {
   padding-top: 56px;

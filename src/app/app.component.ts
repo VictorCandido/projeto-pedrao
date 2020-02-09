@@ -16,8 +16,8 @@ export class AppComponent {
   constructor() {
     this.navbarItems = [
       { label: 'Home', link: 'home' },
-      { label: 'Categorias', link: 'home' },
-      { label: 'Produtos', link: 'home' },
+      { label: 'Categorias', link: 'categorias/listar' },
+      { label: 'Produtos', link: 'produtos/listar' },
     ];
   }
 
