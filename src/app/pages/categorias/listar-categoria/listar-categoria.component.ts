@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { PoTableColumn } from '@portinari/portinari-ui';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { PoTableColumn, PoPageAction, PoTableComponent } from '@portinari/portinari-ui';
 
 @Component({
   selector: 'app-listar-categoria',
@@ -10,6 +10,14 @@ export class ListarCategoriaComponent implements OnInit {
   public columns: PoTableColumn[];
   public items: any[];
 
+  public readonly actions: Array<PoPageAction> = [
+    { label: 'Novo', icon: 'po-icon-plus', action: this.novoFunction },
+    { label: 'Editar', icon: 'po-icon-edit', action: this.editarFunction },
+    { label: 'Salvar', icon: 'po-icon-ok', action: this.salvarFunction },
+    { label: 'Remover', icon: 'po-icon-close', action: this.removerFunction, type: 'danger' },
+  ];
+
+  @ViewChild(PoTableComponent, { static: true }) poTable: PoTableComponent;
 
   constructor() {
     this.columns = [
@@ -27,6 +35,22 @@ export class ListarCategoriaComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  novoFunction() {
+    console.log(this.poTable.getSelectedRows());
+  }
+
+  editarFunction() {
+
+  }
+
+  salvarFunction() {
+
+  }
+
+  removerFunction() {
+    console.log(this.poTable.getSelectedRows());
   }
 
 }

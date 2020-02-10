@@ -1,8 +1,21 @@
-<po-page-default p-title="Listar categorias">
+<po-page-list
+  p-title="Categorias"
+  [p-actions]="actions"
+>
 
   <po-table
     [p-columns]="columns"
     [p-items]="items"
+    p-selectable=true
+    p-single-select=true
+    p-container="shadow"
   ></po-table>
 
-</po-page-default>
+</po-page-list>
+
+
+<po-modal
+  p-title="Adicionar Categoria"
+  [p-primary-action]="confirm"
+  [p-secondary-action]="close"
+></po-modal>
