@@ -1,3 +1,4 @@
+import { CategoriasService } from './../categorias.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   PoTableColumn,
@@ -13,10 +14,22 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-listar-categoria',
   templateUrl: './listar-categoria.component.html',
-  styleUrls: ['./listar-categoria.component.css']
+  styleUrls: ['./listar-categoria.component.css'],
+  providers: [PoNotificationService]
 })
+
 export class ListarCategoriaComponent implements OnInit {
   public items: any[];
+  public nomeCategoria: string;
+  public idCategoria: string;
+  public editMode: boolean;
+  public categoriaSelecionada;
+
+  private config: PoNotification = {
+    message: '',
+    orientation: 1,
+    duration: 3000
+  };
 
   public readonly columns: PoTableColumn[] = [
     { label: 'ID', property: 'id' },
@@ -24,10 +37,9 @@ export class ListarCategoriaComponent implements OnInit {
   ];
 
   public readonly actions: Array<PoPageAction> = [
-    { label: 'Novo', icon: 'po-icon-plus', action: this.novoFunction },
-    { label: 'Editar', icon: 'po-icon-edit', action: this.editarFunction },
-    { label: 'Salvar', icon: 'po-icon-ok', action: this.salvarFunction },
-    { label: 'Remover', icon: 'po-icon-close', action: this.removerFunction, type: 'danger' },
+    { label: 'Novo', icon: 'po-icon-plus', action: this.novoFunction, disabled: false },
+    { label: 'Editar', icon: 'po-icon-edit', action: this.editarFunction, disabled: true },
+    { label: 'Remover', icon: 'po-icon-close', action: this.removerFunction, type: 'danger', disabled: true },
   ];
 
   public readonly closeNovo: PoModalAction = {
@@ -41,52 +53,107 @@ export class ListarCategoriaComponent implements OnInit {
     label: 'Confirmar',
   };
 
+  public readonly closeConfirm: PoModalAction = {
+    action: () => this.close_confirm(),
+    label: 'Cancelar',
+    danger: true
+  };
+
+  public readonly confirmConfirm: PoModalAction = {
+    action: () => this.confirm_confirm(),
+    label: 'Confirmar',
+  };
+
   @ViewChild(PoTableComponent, { static: true }) private poTable: PoTableComponent;
-  @ViewChild(PoModalComponent, { static: true }) private poModal: PoModalComponent;
+  @ViewChild('modalCategoria', { static: true }) private poModalCadastrar: PoModalComponent;
+  @ViewChild('modalConfirm', { static: true }) private poModalConfirm: PoModalComponent;
   @ViewChild('novoForm', { static: true }) form: NgForm;
 
-  constructor( private poNotification: PoNotificationService ) {  }
+  constructor(
+    private poNotification: PoNotificationService,
+    private service: CategoriasService
+  ) {  }
 
   ngOnInit() {
-    this.items = [
-      { id: 1, nome_categoria: 'CATEGORIA 1' },
-      { id: 2, nome_categoria: 'CATEGORIA 2' },
-      { id: 3, nome_categoria: 'CATEGORIA 3' },
-      { id: 4, nome_categoria: 'CATEGORIA 4' },
-      { id: 5, nome_categoria: 'CATEGORIA 5' },
-    ];
+    this.items = this.service.getItems();
+
+    this.categoriaSelecionada = {
+      id: '',
+      nome_categoria: ''
+    };
+  }
+
+  selectRowFunction(row: any) {
+    if (row.$selected) {
+      this.categoriaSelecionada = row;
+
+      this.actions[0].disabled = true;
+      this.actions[1].disabled = false;
+      this.actions[2].disabled = false;
+    } else {
+      this.categoriaSelecionada = {
+        id: '',
+        nome_categoria: ''
+      };
+
+      this.actions[0].disabled = false;
+      this.actions[1].disabled = true;
+      this.actions[2].disabled = true;
+    }
   }
 
   private novoFunction() {
-    this.poModal.open();
+    this.editMode = false;
+    this.nomeCategoria = '';
+    this.poModalCadastrar.open();
   }
 
   private editarFunction() {
+    const row = this.poTable.getSelectedRows()[0];
 
-  }
+    if (row) {
+      this.editMode = true;
 
-  private salvarFunction() {
+      this.idCategoria = this.categoriaSelecionada.id;
+      this.nomeCategoria = this.categoriaSelecionada.nome_categoria;
 
+      this.poModalCadastrar.open();
+    }
   }
 
   private removerFunction() {
-    console.log(this.poTable.getSelectedRows());
+    this.poModalConfirm.open();
   }
 
   private confirm_novo() {
     if (this.form.invalid) {
-      const config: PoNotification = {
-        message: 'Nome da categoria não preenchida!',
-        orientation: 1,
-        duration: 3000
-      };
 
-      this.poNotification.warning(config);
+      this.config.message = 'Necessario preencher nome da categoria!';
+      this.poNotification.warning(this.config);
+
+    } else {
+      // Cadastrar novo registo de categoria
+
+      this.config.message = 'Cadastrado com sucesso!';
+      this.poNotification.success(this.config);
+
+      this.poModalCadastrar.close();
     }
   }
 
   private close_novo() {
-    this.poModal.close();
+    this.poModalCadastrar.close();
+  }
+
+  private close_confirm() {
+    this.poModalConfirm.close();
+  }
+
+  private confirm_confirm() {
+    this.config.message = 'Removido com sucesso!';
+    this.poNotification.success(this.config);
+
+    this.poModalConfirm.close();
   }
 
 }

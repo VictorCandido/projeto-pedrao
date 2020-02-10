@@ -9,29 +9,56 @@
     p-selectable=true
     p-single-select=true
     p-container="shadow"
+    (p-selected)="selectRowFunction($event)"
+    (p-unselected)="selectRowFunction($event)"
   ></po-table>
 
 </po-page-list>
 
 
-<po-modal
+<!-- MODAL CADASTRO DE CATEGORIAS -->
+<po-modal #modalCategoria
   p-title="Adicionar Categoria"
   [p-primary-action]="confirmNovo"
   [p-secondary-action]="closeNovo"
 >
   <form #novoForm="ngForm">
+    <div class="po-row" *ngIf="editMode" >
+      <div class="po-md-12">
+
+        <po-input
+          p-label="Id da categoria"
+          name="id_categoria"
+          [(ngModel)]="idCategoria"
+          p-icon="po-icon-star"
+          p-readonly=true
+        ></po-input>
+
+      </div>
+    </div>
+
     <div class="po-row">
       <div class="po-md-12">
 
         <po-input
           p-auto-focus=true
-          p-required=true
+          p-required
           p-label="Nome da categoria"
           name="nome_categoria"
+          [(ngModel)]="nomeCategoria"
           p-icon="po-icon-info"
         ></po-input>
 
       </div>
     </div>
   </form>
+</po-modal>
+
+<!-- MODAL CONFIRM -->
+<po-modal #modalConfirm
+  p-title="Remover item?"
+  [p-primary-action]="confirmConfirm"
+  [p-secondary-action]="closeConfirm"
+>
+  Deseja realmente excluir o item a categoria {{ categoriaSelecionada["nome_categoria"] }}?
 </po-modal>
