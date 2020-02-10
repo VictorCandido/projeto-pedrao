@@ -16,6 +16,22 @@
 
 <po-modal
   p-title="Adicionar Categoria"
-  [p-primary-action]="confirm"
-  [p-secondary-action]="close"
-></po-modal>
+  [p-primary-action]="confirmNovo"
+  [p-secondary-action]="closeNovo"
+>
+  <form #novoForm="ngForm">
+    <div class="po-row">
+      <div class="po-md-12">
+
+        <po-input
+          p-auto-focus=true
+          p-required=true
+          p-label="Nome da categoria"
+          name="nome_categoria"
+          p-icon="po-icon-info"
+        ></po-input>
+
+      </div>
+    </div>
+  </form>
+</po-modal>

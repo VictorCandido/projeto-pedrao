@@ -1,5 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { PoTableColumn, PoPageAction, PoTableComponent } from '@portinari/portinari-ui';
+import {
+  PoTableColumn,
+  PoPageAction,
+  PoTableComponent,
+  PoModalComponent,
+  PoModalAction,
+  PoNotificationService,
+  PoNotification
+} from '@portinari/portinari-ui';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-listar-categoria',
@@ -7,8 +16,12 @@ import { PoTableColumn, PoPageAction, PoTableComponent } from '@portinari/portin
   styleUrls: ['./listar-categoria.component.css']
 })
 export class ListarCategoriaComponent implements OnInit {
-  public columns: PoTableColumn[];
   public items: any[];
+
+  public readonly columns: PoTableColumn[] = [
+    { label: 'ID', property: 'id' },
+    { label: 'Nome da categoria', property: 'nome_categoria' },
+  ];
 
   public readonly actions: Array<PoPageAction> = [
     { label: 'Novo', icon: 'po-icon-plus', action: this.novoFunction },
@@ -17,14 +30,24 @@ export class ListarCategoriaComponent implements OnInit {
     { label: 'Remover', icon: 'po-icon-close', action: this.removerFunction, type: 'danger' },
   ];
 
-  @ViewChild(PoTableComponent, { static: true }) poTable: PoTableComponent;
+  public readonly closeNovo: PoModalAction = {
+    action: () => this.close_novo(),
+    label: 'Cancelar',
+    danger: true
+  };
 
-  constructor() {
-    this.columns = [
-      { label: 'ID', property: 'id' },
-      { label: 'Nome da categoria', property: 'nome_categoria' },
-    ];
+  public readonly confirmNovo: PoModalAction = {
+    action: () => this.confirm_novo(),
+    label: 'Confirmar',
+  };
 
+  @ViewChild(PoTableComponent, { static: true }) private poTable: PoTableComponent;
+  @ViewChild(PoModalComponent, { static: true }) private poModal: PoModalComponent;
+  @ViewChild('novoForm', { static: true }) form: NgForm;
+
+  constructor( private poNotification: PoNotificationService ) {  }
+
+  ngOnInit() {
     this.items = [
       { id: 1, nome_categoria: 'CATEGORIA 1' },
       { id: 2, nome_categoria: 'CATEGORIA 2' },
@@ -34,23 +57,36 @@ export class ListarCategoriaComponent implements OnInit {
     ];
   }
 
-  ngOnInit() {
+  private novoFunction() {
+    this.poModal.open();
   }
 
-  novoFunction() {
+  private editarFunction() {
+
+  }
+
+  private salvarFunction() {
+
+  }
+
+  private removerFunction() {
     console.log(this.poTable.getSelectedRows());
   }
 
-  editarFunction() {
+  private confirm_novo() {
+    if (this.form.invalid) {
+      const config: PoNotification = {
+        message: 'Nome da categoria não preenchida!',
+        orientation: 1,
+        duration: 3000
+      };
 
+      this.poNotification.warning(config);
+    }
   }
 
-  salvarFunction() {
-
-  }
-
-  removerFunction() {
-    console.log(this.poTable.getSelectedRows());
+  private close_novo() {
+    this.poModal.close();
   }
 
 }

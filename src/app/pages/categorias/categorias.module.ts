@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { CategoriasRoutingModule } from './categorias-routing.module';
 import { ListarCategoriaComponent } from './listar-categoria/listar-categoria.component';
 import { CadastrarCategoriaComponent } from './cadastrar-categoria/cadastrar-categoria.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { CadastrarCategoriaComponent } from './cadastrar-categoria/cadastrar-cat
   imports: [
     CommonModule,
     CategoriasRoutingModule,
-    PoModule
+    PoModule,
+    FormsModule
   ]
 })
 export class CategoriasModule { }
