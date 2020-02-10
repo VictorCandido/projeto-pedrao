@@ -1,0 +1,56 @@
+{
+  "categorias": [
+    {
+      "id": 1,
+      "nome_categoria": "CATEGORIA 1"
+    },
+    {
+      "id": 2,
+      "nome_categoria": "CATEGORIA 2"
+    },
+    {
+      "id": 3,
+      "nome_categoria": "CATEGORIA 3"
+    },
+    {
+      "id": 4,
+      "nome_categoria": "CATEGORIA 4"
+    },
+    {
+      "id": 5,
+      "nome_categoria": "CATEGORIA 5"
+    },
+    {
+      "nome_categoria": "CATEGORIA 6",
+      "id": 6
+    }
+  ],
+  "produtos": [
+    {
+      "id": 1,
+      "id_categoria": 1,
+      "nome_produto": "PRODUTO 1"
+    },
+    {
+      "id": 2,
+      "id_categoria": 2,
+      "nome_produto": "PRODUTO 2"
+    },
+    {
+      "id": 3,
+      "id_categoria": 3,
+      "nome_produto": "PRODUTO 3"
+    },
+    {
+      "id": 4,
+      "id_categoria": 4,
+      "nome_produto": "PRODUTO 4"
+    },
+    {
+      "id": 5,
+      "id_categoria": 5,
+      "nome_produto": "PRODUTO 5"
+    }
+  ],
+  "teste": []
+}
