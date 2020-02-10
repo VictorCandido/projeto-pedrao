@@ -1,8 +1,19 @@
-<po-page-default p-title="Listar produtos">
+<po-page-list
+  p-title="Produtos"
+  [p-actions]="actions"
+>
 
   <po-table
     [p-columns]="columns"
     [p-items]="items"
+    p-selectable=true
+    p-single-select=true
+    p-container="shadow"
   ></po-table>
 
-</po-page-default>
+</po-page-list>
+
+
+<po-modal
+  p-title="Adicionar Produtos"
+></po-modal>
