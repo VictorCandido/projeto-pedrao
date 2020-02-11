@@ -10,6 +10,7 @@ import {
   PoNotification
 } from '@portinari/portinari-ui';
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-listar-categoria',
@@ -24,6 +25,7 @@ export class ListarCategoriaComponent implements OnInit {
   public idCategoria: string;
   public editMode: boolean;
   public categoriaSelecionada;
+  private subscription: Subscription;
 
   private config: PoNotification = {
     message: '',
@@ -75,7 +77,7 @@ export class ListarCategoriaComponent implements OnInit {
   ) {  }
 
   ngOnInit() {
-    this.items = this.service.getItems();
+    this.iniciaTable();
 
     this.categoriaSelecionada = {
       id: '',
@@ -100,6 +102,19 @@ export class ListarCategoriaComponent implements OnInit {
       this.actions[1].disabled = true;
       this.actions[2].disabled = true;
     }
+  }
+
+  private iniciaTable() {
+    this.subscription = this.service.getCategorias().subscribe(res => this.items = res);
+
+    this.categoriaSelecionada = {
+      id: '',
+      nome_categoria: ''
+    };
+
+    this.actions[0].disabled = false;
+    this.actions[1].disabled = true;
+    this.actions[2].disabled = true;
   }
 
   private novoFunction() {
@@ -132,12 +147,45 @@ export class ListarCategoriaComponent implements OnInit {
       this.poNotification.warning(this.config);
 
     } else {
-      // Cadastrar novo registo de categoria
+      if (this.editMode) {
 
-      this.config.message = 'Cadastrado com sucesso!';
-      this.poNotification.success(this.config);
+        this.service.updateCategoria({ id: this.idCategoria, nome_categoria: this.nomeCategoria }).subscribe(res => {
+          if (res) {
+            this.service.updateMenuCategorias();
+            this.iniciaTable();
 
-      this.poModalCadastrar.close();
+            this.config.message = 'Alterado com sucesso!';
+            this.poNotification.success(this.config);
+
+            this.poModalCadastrar.close();
+          } else {
+            this.config.message = 'Falha ao alterar nova categoria!';
+            this.poNotification.error(this.config);
+
+            this.poModalCadastrar.close();
+          }
+        });
+
+      } else {
+
+        this.service.insertCategoria({ nome_categoria: this.nomeCategoria }).subscribe(res => {
+          if (res) {
+            this.service.updateMenuCategorias();
+            this.iniciaTable();
+
+            this.config.message = 'Cadastrado com sucesso!';
+            this.poNotification.success(this.config);
+
+            this.poModalCadastrar.close();
+          } else {
+            this.config.message = 'Falha ao cadastrar nova categoria!';
+            this.poNotification.error(this.config);
+
+            this.poModalCadastrar.close();
+          }
+        });
+
+      }
     }
   }
 
@@ -150,10 +198,23 @@ export class ListarCategoriaComponent implements OnInit {
   }
 
   private confirm_confirm() {
-    this.config.message = 'Removido com sucesso!';
-    this.poNotification.success(this.config);
+    this.service.deleteCategoria(this.categoriaSelecionada.id).subscribe(res => {
+      if (res) {
+        this.service.updateMenuCategorias();
+        this.subscription.unsubscribe();
+        this.iniciaTable();
 
-    this.poModalConfirm.close();
+        this.config.message = 'Removido com sucesso!';
+        this.poNotification.success(this.config);
+
+        this.poModalConfirm.close();
+      } else {
+        this.config.message = 'Falha ao remover categoria!';
+        this.poNotification.error(this.config);
+
+        this.poModalConfirm.close();
+      }
+    })
   }
 
 }

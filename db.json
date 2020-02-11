@@ -1,10 +1,6 @@
 {
   "categorias": [
     {
-      "id": 1,
-      "nome_categoria": "CATEGORIA 1"
-    },
-    {
       "id": 2,
       "nome_categoria": "CATEGORIA 2"
     },
@@ -17,11 +13,11 @@
       "nome_categoria": "CATEGORIA 4"
     },
     {
-      "id": 5,
-      "nome_categoria": "CATEGORIA 5"
+      "nome_categoria": "teste",
+      "id": 5
     },
     {
-      "nome_categoria": "CATEGORIA 6",
+      "nome_categoria": "OPAAA",
       "id": 6
     }
   ],
@@ -51,6 +47,5 @@
       "id_categoria": 5,
       "nome_produto": "PRODUTO 5"
     }
-  ],
-  "teste": []
+  ]
 }

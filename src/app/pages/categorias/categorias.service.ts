@@ -1,19 +1,39 @@
-import { Injectable } from '@angular/core';
+import { environment } from './../../../environments/environment';
+import { Injectable, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriasService {
 
-  constructor() { }
+  static emitirCategoria = new EventEmitter<any>();
+  readonly api = `${environment.apiUrl}/categorias`;
 
-  getItems(): any[] {
-    return [
-      { id: 1, nome_categoria: 'CATEGORIA 1' },
-      { id: 2, nome_categoria: 'CATEGORIA 2' },
-      { id: 3, nome_categoria: 'CATEGORIA 3' },
-      { id: 4, nome_categoria: 'CATEGORIA 4' },
-      { id: 5, nome_categoria: 'CATEGORIA 5' },
-    ];
+  constructor( private http: HttpClient ) { }
+
+  getCategorias(): any {
+    return this.http.get(this.api);
+  }
+
+  insertCategoria(categoria): any {
+    return this.http.post(this.api, categoria);
+  }
+
+  updateCategoria(categoria): any {
+    return this.http.put(`${this.api}/${categoria.id}`, { nome_categoria: categoria.nome_categoria });
+  }
+
+  deleteCategoria(id): any {
+    return this.http.delete(`${this.api}/${id}`);
+  }
+
+  updateMenuCategorias() {
+    this.getCategorias().subscribe(res => {
+      const categorias = res.map(element => {
+        return { label: element.nome_categoria, link: `categorias/${element.id}` };
+      });
+      CategoriasService.emitirCategoria.emit(categorias);
+    });
   }
 }
