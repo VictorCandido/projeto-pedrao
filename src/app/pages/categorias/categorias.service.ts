@@ -7,8 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CategoriasService {
 
-  static emitirCategoria = new EventEmitter<any>();
-  readonly api = `${environment.apiUrl}/categorias`;
+  public static emitirCategoria = new EventEmitter<any>();
+  private readonly api = `${environment.apiUrl}/categorias`;
 
   constructor( private http: HttpClient ) { }
 

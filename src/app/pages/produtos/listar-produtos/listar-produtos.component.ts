@@ -1,10 +1,12 @@
+import { ProdutosService } from './../produtos.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PoTableColumn, PoPageAction, PoTableComponent } from '@portinari/portinari-ui';
 
 @Component({
   selector: 'app-listar-produtos',
   templateUrl: './listar-produtos.component.html',
-  styleUrls: ['./listar-produtos.component.css']
+  styleUrls: ['./listar-produtos.component.css'],
+  providers: [ ProdutosService ]
 })
 export class ListarProdutosComponent implements OnInit {
   public items: any[];
@@ -12,7 +14,6 @@ export class ListarProdutosComponent implements OnInit {
   public readonly actions: Array<PoPageAction> = [
     { label: 'Novo', icon: '', action: this.novoFunction },
     { label: 'Editar', icon: '', action: this.editarFunction },
-    { label: 'Salvar', icon: '', action: this.salvarFunction },
     { label: 'Remover', icon: '', action: this.removerFunction },
   ];
 
@@ -24,17 +25,10 @@ export class ListarProdutosComponent implements OnInit {
 
   @ViewChild(PoTableComponent, { static: true }) poTable: PoTableComponent;
 
-  constructor() {
-    this.items = [
-      { id: 1, id_categoria: 'CATEGORIA 1', nome_produto: 'PRODUTO 1' },
-      { id: 2, id_categoria: 'CATEGORIA 2', nome_produto: 'PRODUTO 2' },
-      { id: 3, id_categoria: 'CATEGORIA 3', nome_produto: 'PRODUTO 3' },
-      { id: 4, id_categoria: 'CATEGORIA 4', nome_produto: 'PRODUTO 4' },
-      { id: 5, id_categoria: 'CATEGORIA 5', nome_produto: 'PRODUTO 5' },
-    ];
-  }
+  constructor( private service: ProdutosService ) {  }
 
   ngOnInit() {
+    this.service.getProdutos().subscribe(res => this.items = res);
   }
 
   novoFunction() {
