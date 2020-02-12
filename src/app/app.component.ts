@@ -1,3 +1,4 @@
+import { AppService } from './app.service';
 import { CategoriasService } from './pages/categorias/categorias.service';
 import { Component } from '@angular/core';
 
@@ -14,7 +15,10 @@ export class AppComponent {
 
   menus: Array<PoMenuItem>;
 
-  constructor( private categoriasService: CategoriasService ) {
+  constructor(
+    private categoriasService: CategoriasService,
+    private appService: AppService
+    ) {
     this.navbarItems = [
       { label: 'Home', link: 'home' },
       { label: 'Categorias', link: 'categorias/listar' },
@@ -30,5 +34,7 @@ export class AppComponent {
         return { label: element.nome_categoria, link: `categorias/${element.id}` };
       });
     });
+
+    // this.appService.updateMenuCategorias();
   }
 }

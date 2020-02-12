@@ -1,3 +1,4 @@
+import { ProdutosService } from './../produtos/produtos.service';
 import { environment } from './../../../environments/environment';
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -10,7 +11,10 @@ export class CategoriasService {
   public static emitirCategoria = new EventEmitter<any>();
   private readonly api = `${environment.apiUrl}/categorias`;
 
-  constructor( private http: HttpClient ) { }
+  constructor(
+    private http: HttpClient,
+    private produtosService: ProdutosService
+  ) { }
 
   getCategorias(): any {
     return this.http.get(this.api);
@@ -36,4 +40,24 @@ export class CategoriasService {
       CategoriasService.emitirCategoria.emit(categorias);
     });
   }
+
+  // getCategoriasProdutos(): any {
+  //   return new Promise((resolve, reject) => {
+
+  //     this.getCategorias().subscribe(categorias => {
+  //       const categoriasProdutos: any[] = new Array();
+
+  //       categorias.forEach(async (element, index) => {
+  //         categoriasProdutos.push(element);
+
+  //         this.produtosService.getProdutosByCategoria(element.id).subscribe(produtos => {
+  //           categoriasProdutos[index].produtos = produtos;
+  //         });
+  //       });
+
+  //       resolve(categoriasProdutos);
+  //     });
+
+  //   });
+  // }
 }

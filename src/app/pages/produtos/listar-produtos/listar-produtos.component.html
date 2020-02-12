@@ -13,7 +13,11 @@
 
 </po-page-list>
 
-
-<po-modal
-  p-title="Adicionar Produtos"
-></po-modal>
+<!-- MODAL CADASTRO DE CATEGORIAS -->
+<po-modal #modalProduto
+  p-title="Adicionar Produto"
+  [p-primary-action]="confirmNovo"
+  [p-secondary-action]="closeNovo"
+>
+  <app-cadastrar-produtos></app-cadastrar-produtos>
+</po-modal>

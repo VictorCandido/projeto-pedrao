@@ -1,6 +1,6 @@
 import { ProdutosService } from './../produtos.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { PoTableColumn, PoPageAction, PoTableComponent } from '@portinari/portinari-ui';
+import { PoTableColumn, PoPageAction, PoTableComponent, PoModalAction, PoModalComponent } from '@portinari/portinari-ui';
 
 @Component({
   selector: 'app-listar-produtos',
@@ -23,7 +23,19 @@ export class ListarProdutosComponent implements OnInit {
     { label: 'Nome do produto', property: 'nome_produto' },
   ];
 
+  public readonly closeNovo: PoModalAction = {
+    action: () => this.close_novo(),
+    label: 'Cancelar',
+    danger: true
+  };
+
+  public readonly confirmNovo: PoModalAction = {
+    action: () => this.confirm_novo(),
+    label: 'Confirmar',
+  };
+
   @ViewChild(PoTableComponent, { static: true }) poTable: PoTableComponent;
+  @ViewChild('modalProduto', { static: true }) private poModalCadastrar: PoModalComponent;
 
   constructor( private service: ProdutosService ) {  }
 
@@ -31,8 +43,16 @@ export class ListarProdutosComponent implements OnInit {
     this.service.getProdutos().subscribe(res => this.items = res);
   }
 
-  novoFunction() {
+  confirm_novo() {
 
+  }
+
+  close_novo() {
+
+  }
+
+  novoFunction() {
+    this.poModalCadastrar.open();
   }
 
   editarFunction() {

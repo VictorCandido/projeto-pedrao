@@ -9,10 +9,16 @@ export class ProdutosService {
 
   private readonly api = `${environment.apiUrl}/produtos`;
 
-  constructor( private http: HttpClient ) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   getProdutos(): any {
     return this.http.get(this.api);
+  }
+
+  getProdutosByCategoria(categoriaId): any {
+    return this.http.get(`${this.api}/?id_categoria=${categoriaId}`);
   }
 
   insertProdutos(produto): any {
