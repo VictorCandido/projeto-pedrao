@@ -44,7 +44,7 @@ export class ListarProdutosComponent implements OnInit {
   }
 
   recebeValores($event) {
-
+    console.log($event);
   }
 
   confirm_novo() {

@@ -1,8 +1,12 @@
 import { CategoriasService } from './../../categorias/categorias.service';
-import { Component, OnInit, Output, ViewChild } from '@angular/core';
-import { PoDynamicFormField, PoSelectOption, PoDynamicFormValidation, PoDynamicFormFieldChanged, PoDynamicFormComponent } from '@portinari/portinari-ui';
-import { EventEmitter } from 'events';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
+import {
+  PoDynamicFormField,
+  PoSelectOption,
+  PoDynamicFormFieldChanged,
+  PoDynamicFormComponent,
+  PoDynamicFormFieldValidation
+} from '@portinari/portinari-ui';
 
 @Component({
   selector: 'app-cadastrar-produtos',
@@ -12,7 +16,9 @@ import { NgForm } from '@angular/forms';
 export class CadastrarProdutosComponent implements OnInit {
   public fields: Array<PoDynamicFormField>;
   private categorias: Array<PoSelectOption>;
-  private cadastraForm: NgForm;
+  private nomeProduto: string;
+  private categoria: string;
+  private descricao: string;
 
   @Output() form = new EventEmitter();
   @ViewChild(PoDynamicFormComponent, { static: true }) dynamicForm: PoDynamicFormComponent;
@@ -25,9 +31,9 @@ export class CadastrarProdutosComponent implements OnInit {
     await this.getCategoriasOptions();
 
     this.fields = [
-      { property: 'nome_produto', label: 'Nome do produto', required: true, gridColumns: 6, gridSmColumns: 12 },
-      { property: 'categoria', label: 'categoria', required: true, gridColumns: 6, gridSmColumns: 12, options: this.categorias },
-      { property: 'descricao', label: 'Descrição', required: true, gridColumns: 12, gridSmColumns: 12, rows: 3 },
+      { property: 'nome_produto', label: 'Nome do produto', required: true, gridColumns: 6, gridSmColumns: 12, validate: this.changeCampo },
+      { property: 'categoria', label: 'categoria', required: true, gridColumns: 6, gridSmColumns: 12, options: this.categorias, validate: this.changeCampo },
+      { property: 'descricao', label: 'Descrição', required: true, gridColumns: 12, gridSmColumns: 12, rows: 3, validate: this.changeCampo },
     ];
 
     console.log(this.dynamicForm);
@@ -46,12 +52,24 @@ export class CadastrarProdutosComponent implements OnInit {
     });
   }
 
-  getForm(form: NgForm) {
-    this.cadastraForm = form;
+  changeCampo(changedValue: PoDynamicFormFieldChanged): PoDynamicFormFieldValidation {
+    if (changedValue.property === 'nome_produto') {
+      this.nomeProduto = changedValue.value;
+    } else if (changedValue.property === 'categoria') {
+      this.categoria = changedValue.value;
+    } else {
+      this.descricao = changedValue.value;
+    }
+
+    this.enviaForm();
+    return {};
   }
 
-  teste(changedValue: PoDynamicFormFieldChanged): PoDynamicFormValidation {
-    console.log(changedValue);
-    return {};
+  enviaForm() {
+    this.form.emit({
+      nomeProduto: this.nomeProduto,
+      categoria: this.categoria,
+      descricao: this.descricao
+    });
   }
 }

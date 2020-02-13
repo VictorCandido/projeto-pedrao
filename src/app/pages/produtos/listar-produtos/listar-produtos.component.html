@@ -19,5 +19,5 @@
   [p-primary-action]="confirmNovo"
   [p-secondary-action]="closeNovo"
 >
-  <app-cadastrar-produtos ></app-cadastrar-produtos>
+  <app-cadastrar-produtos (form)="recebeValores($event)"></app-cadastrar-produtos>
 </po-modal>
