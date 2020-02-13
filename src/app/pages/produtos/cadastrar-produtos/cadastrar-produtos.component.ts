@@ -1,6 +1,8 @@
 import { CategoriasService } from './../../categorias/categorias.service';
-import { Component, OnInit } from '@angular/core';
-import { PoDynamicFormField, PoSelectOption } from '@portinari/portinari-ui';
+import { Component, OnInit, Output, ViewChild } from '@angular/core';
+import { PoDynamicFormField, PoSelectOption, PoDynamicFormValidation, PoDynamicFormFieldChanged, PoDynamicFormComponent } from '@portinari/portinari-ui';
+import { EventEmitter } from 'events';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastrar-produtos',
@@ -10,6 +12,10 @@ import { PoDynamicFormField, PoSelectOption } from '@portinari/portinari-ui';
 export class CadastrarProdutosComponent implements OnInit {
   public fields: Array<PoDynamicFormField>;
   private categorias: Array<PoSelectOption>;
+  private cadastraForm: NgForm;
+
+  @Output() form = new EventEmitter();
+  @ViewChild(PoDynamicFormComponent, { static: true }) dynamicForm: PoDynamicFormComponent;
 
   constructor(
     private categoriasService: CategoriasService
@@ -23,6 +29,8 @@ export class CadastrarProdutosComponent implements OnInit {
       { property: 'categoria', label: 'categoria', required: true, gridColumns: 6, gridSmColumns: 12, options: this.categorias },
       { property: 'descricao', label: 'Descrição', required: true, gridColumns: 12, gridSmColumns: 12, rows: 3 },
     ];
+
+    console.log(this.dynamicForm);
   }
 
   getCategoriasOptions() {
@@ -36,5 +44,14 @@ export class CadastrarProdutosComponent implements OnInit {
         resolve();
        });
     });
+  }
+
+  getForm(form: NgForm) {
+    this.cadastraForm = form;
+  }
+
+  teste(changedValue: PoDynamicFormFieldChanged): PoDynamicFormValidation {
+    console.log(changedValue);
+    return {};
   }
 }

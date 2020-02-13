@@ -43,6 +43,10 @@ export class ListarProdutosComponent implements OnInit {
     this.service.getProdutos().subscribe(res => this.items = res);
   }
 
+  recebeValores($event) {
+
+  }
+
   confirm_novo() {
 
   }
