@@ -25,27 +25,44 @@
     {
       "id": 1,
       "id_categoria": 1,
-      "nome_produto": "PRODUTO 1"
+      "nome_produto": "PRODUTO 1",
+      "descricao": ""
     },
     {
       "id": 2,
       "id_categoria": 2,
-      "nome_produto": "PRODUTO 2"
+      "nome_produto": "PRODUTO 2",
+      "descricao": ""
     },
     {
       "id": 3,
       "id_categoria": 3,
-      "nome_produto": "PRODUTO 3"
+      "nome_produto": "PRODUTO 3",
+      "descricao": ""
     },
     {
       "id": 4,
       "id_categoria": 4,
-      "nome_produto": "PRODUTO 4"
+      "nome_produto": "PRODUTO 4",
+      "descricao": ""
     },
     {
       "id": 5,
       "id_categoria": 5,
-      "nome_produto": "PRODUTO 5"
+      "nome_produto": "PRODUTO 5",
+      "descricao": ""
+    },
+    {
+      "id_categoria": 5,
+      "nome_produto": "NOVO PRODUTO",
+      "descricao": "TESTE DESCRICAO",
+      "id": 6
+    },
+    {
+      "id_categoria": 3,
+      "nome_produto": "teste",
+      "descricao": "tst",
+      "id": 7
     }
   ]
 }

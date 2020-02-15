@@ -1,3 +1,4 @@
+import { AppService } from './../../../app.service';
 import { NgForm } from '@angular/forms';
 import { CategoriasService } from './../../categorias/categorias.service';
 import { Component, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
@@ -14,9 +15,9 @@ import {
 export class CadastrarProdutosComponent implements OnInit {
   public fields: Array<PoDynamicFormField>;
   public categorias: Array<PoSelectOption> = [];
-  private nomeProduto: string;
-  private categoria: string;
-  private descricao: string;
+  public nomeProduto: string;
+  public categoria: string;
+  public descricao: string;
 
   @Output() form = new EventEmitter();
 
@@ -26,6 +27,11 @@ export class CadastrarProdutosComponent implements OnInit {
 
   ngOnInit() {
     this.getCategoriasOptions();
+    AppService.emitirProduto.subscribe(res => {
+      this.nomeProduto = res.nomeProduto;
+      this.categoria = res.categoria;
+      this.descricao = res.descricao;
+    })
   }
 
   onSubmit(f: NgForm) {
@@ -33,31 +39,13 @@ export class CadastrarProdutosComponent implements OnInit {
   }
 
   getCategoriasOptions() {
-    // return new Promise((resolve, reject) => {
-      this.categoriasService.getCategorias().subscribe(res => {
-        const categorias: Array<PoSelectOption> = res.map(element => {
-          return { label: element.nome_categoria, value: element.id };
-        });
+    this.categoriasService.getCategorias().subscribe(res => {
+      const categorias: Array<PoSelectOption> = res.map(element => {
+        return { label: element.nome_categoria, value: element.id };
+      });
 
-        this.categorias = categorias;
-        // resolve();
-       });
-    // });
-  }
-
-  changeNomeProduto($event) {
-    this.nomeProduto = $event;
-    this.enviaDados();
-  }
-
-  changeCategoria($event) {
-    this.categoria = $event;
-    this.enviaDados();
-  }
-
-  changeDescricao($event) {
-    this.descricao = $event;
-    this.enviaDados();
+      this.categorias = categorias;
+    });
   }
 
   enviaDados() {
