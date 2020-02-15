@@ -6,6 +6,7 @@ import { ProdutosService } from './produtos.service';
 import { ProdutosRoutingModule } from './produtos-routing.module';
 import { ListarProdutosComponent } from './listar-produtos/listar-produtos.component';
 import { CadastrarProdutosComponent } from './cadastrar-produtos/cadastrar-produtos.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { CadastrarProdutosComponent } from './cadastrar-produtos/cadastrar-produ
   imports: [
     CommonModule,
     ProdutosRoutingModule,
-    PoModule
+    PoModule,
+    FormsModule
   ],
   providers: [
     ProdutosService

@@ -1,4 +1,35 @@
-<po-dynamic-form
-    p-auto-focus="nome_produto"
-    [p-fields]="fields"
-></po-dynamic-form>
+<!-- <form #cadastroProduto="ngForm"  > -->
+
+  <div class="po-row">
+    <div class="po-md-6">
+      <po-input
+        p-auto-focus=true
+        p-label="Nome do produto"
+        name="nome_produto"
+        (p-change)="changeNomeProduto($event)"
+        p-required=true
+      ></po-input>
+    </div>
+
+    <div class="po-md-6">
+      <po-select
+        p-required=true
+        name="categoria"
+        p-label="Categoria"
+        (p-change)="changeCategoria($event)"
+        [p-options]="categorias"
+      ></po-select>
+    </div>
+  </div>
+
+  <div class="po-row">
+    <div class="po-md-12">
+      <po-textarea
+        name="descricao"
+        p-label="Descrição"
+        (p-change)="changeDescricao($event)"
+      ></po-textarea>
+    </div>
+  </div>
+
+<!-- </form> -->
