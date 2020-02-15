@@ -214,7 +214,7 @@ export class ListarCategoriaComponent implements OnInit {
 
         this.poModalConfirm.close();
       }
-    })
+    });
   }
 
 }
