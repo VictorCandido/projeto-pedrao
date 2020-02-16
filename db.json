@@ -23,18 +23,6 @@
   ],
   "produtos": [
     {
-      "id": 1,
-      "id_categoria": 1,
-      "nome_produto": "PRODUTO 1",
-      "descricao": ""
-    },
-    {
-      "id": 2,
-      "id_categoria": 2,
-      "nome_produto": "PRODUTO 2",
-      "descricao": ""
-    },
-    {
       "id": 3,
       "id_categoria": 3,
       "nome_produto": "PRODUTO 3",
@@ -59,9 +47,9 @@
       "id": 6
     },
     {
-      "id_categoria": 3,
-      "nome_produto": "teste",
-      "descricao": "tst",
+      "nome_produto": "TESTE",
+      "id_categoria": 5,
+      "descricao": "NOVO TESTE",
       "id": 7
     }
   ]

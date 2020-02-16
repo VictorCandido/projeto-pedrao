@@ -1,36 +1,46 @@
-<!-- <form #cadastroProduto="ngForm"  > -->
+<!-- ID PRODUTO -->
+<div class="po-row" *ngIf="idProduto" >
+  <div class="po-md-4">
+    <po-input
+      p-label="ID"
+      [(ngModel)]="idProduto"
+      p-readonly=true
+    ></po-input>
+  </div>
+</div>
 
-  <div class="po-row">
-    <div class="po-md-6">
-      <po-input
-        p-auto-focus=true
-        p-label="Nome do produto"
-        name="nome_produto"
-        [(ngModel)]="nomeProduto"
-        (p-change)="enviaDados()"
-      ></po-input>
-    </div>
-
-    <div class="po-md-6">
-      <po-select
-        name="categoria"
-        p-label="Categoria"
-        [p-options]="categorias"
-        [(ngModel)]="categoria"
-        (p-change)="enviaDados()"
-      ></po-select>
-    </div>
+<!-- NOME PRODUTO -->
+<div class="po-row">
+  <div class="po-md-6">
+    <po-input
+      p-auto-focus=true
+      p-label="Nome do produto"
+      name="nome_produto"
+      [(ngModel)]="nomeProduto"
+      (p-change)="enviaDados()"
+    ></po-input>
   </div>
 
-  <div class="po-row">
-    <div class="po-md-12">
-      <po-textarea
-        name="descricao"
-        p-label="Descrição"
-        [(ngModel)]="descricao"
-        (p-change)="enviaDados()"
-      ></po-textarea>
-    </div>
+<!-- CATEGORIA -->
+  <div class="po-md-6">
+    <po-select
+      name="categoria"
+      p-label="Categoria"
+      [p-options]="categorias"
+      [(ngModel)]="categoria"
+      (p-change)="enviaDados()"
+    ></po-select>
   </div>
+</div>
 
-<!-- </form> -->
+<!-- DESCRICAO -->
+<div class="po-row">
+  <div class="po-md-12">
+    <po-textarea
+      name="descricao"
+      p-label="Descrição"
+      [(ngModel)]="descricao"
+      (p-change)="enviaDados()"
+    ></po-textarea>
+  </div>
+</div>

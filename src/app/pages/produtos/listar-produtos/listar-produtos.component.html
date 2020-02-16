@@ -9,15 +9,26 @@
     p-selectable=true
     p-single-select=true
     p-container="shadow"
+    (p-selected)="selectRowFunction($event)"
+    (p-unselected)="selectRowFunction($event)"
   ></po-table>
 
 </po-page-list>
 
 <!-- MODAL CADASTRO DE CATEGORIAS -->
 <po-modal #modalProduto
-  p-title="Adicionar Produto"
+  [p-title]="produtoTitle"
   [p-primary-action]="confirmNovo"
   [p-secondary-action]="closeNovo"
 >
   <app-cadastrar-produtos (form)="recebeValores($event)"></app-cadastrar-produtos>
+</po-modal>
+
+<!-- MODAL CONFIRM -->
+<po-modal #modalConfirm
+  p-title="Remover item?"
+  [p-primary-action]="confirmConfirm"
+  [p-secondary-action]="closeConfirm"
+>
+  <p>Deseja realmente excluir produto "{{ produtoSelecionado["nome_produto"] }}"?</p>
 </po-modal>

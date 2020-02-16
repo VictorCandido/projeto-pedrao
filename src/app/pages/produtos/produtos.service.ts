@@ -1,11 +1,12 @@
 import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProdutosService {
+  public static emitirProduto = new EventEmitter<any>();
 
   private readonly api = `${environment.apiUrl}/produtos`;
 
@@ -26,10 +27,18 @@ export class ProdutosService {
   }
 
   updateProduto(produto): any {
-    return this.http.put(`${this.api}/${produto.id}`, { nome_categoria: produto.nome_categoria });
+    return this.http.put(`${this.api}/${produto.id_produto}`, {
+      nome_produto: produto.nome_produto,
+      id_categoria: produto.id_categoria,
+      descricao: produto.descricao
+    });
   }
 
   deleteProduto(id): any {
     return this.http.delete(`${this.api}/${id}`);
+  }
+
+  camposValues(idProduto: string, nomeProduto: string, categoria: string, descricao: string) {
+    ProdutosService.emitirProduto.emit({ idProduto, nomeProduto, categoria, descricao });
   }
 }

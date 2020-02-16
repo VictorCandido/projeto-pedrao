@@ -1,7 +1,6 @@
-import { AppService } from './../../../app.service';
-import { NgForm } from '@angular/forms';
+import { ProdutosService } from './../produtos.service';
 import { CategoriasService } from './../../categorias/categorias.service';
-import { Component, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {
   PoDynamicFormField,
   PoSelectOption
@@ -15,6 +14,7 @@ import {
 export class CadastrarProdutosComponent implements OnInit {
   public fields: Array<PoDynamicFormField>;
   public categorias: Array<PoSelectOption> = [];
+  public idProduto: string;
   public nomeProduto: string;
   public categoria: string;
   public descricao: string;
@@ -27,15 +27,12 @@ export class CadastrarProdutosComponent implements OnInit {
 
   ngOnInit() {
     this.getCategoriasOptions();
-    AppService.emitirProduto.subscribe(res => {
+    ProdutosService.emitirProduto.subscribe(res => {
+      this.idProduto = res.idProduto;
       this.nomeProduto = res.nomeProduto;
       this.categoria = res.categoria;
       this.descricao = res.descricao;
-    })
-  }
-
-  onSubmit(f: NgForm) {
-    console.log(f);
+    });
   }
 
   getCategoriasOptions() {
@@ -50,6 +47,7 @@ export class CadastrarProdutosComponent implements OnInit {
 
   enviaDados() {
     this.form.emit({
+      idProduto: this.idProduto,
       nomeProduto: this.nomeProduto,
       categoria: this.categoria,
       descricao: this.descricao
