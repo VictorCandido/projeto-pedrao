@@ -11,19 +11,28 @@ export class AppService {
     private categoriasService: CategoriasService
   ) { }
 
-  // updateMenuCategorias() {
-  //   this.categoriasService.getCategoriasProdutos().then(categorias => {
+  updateMenuCategorias() {
+    this.categoriasService.getCategoriasProdutos().then(categorias => {
+      const final = new Array();
 
-  //     let final = new Array();
+      categorias.forEach(categoria => {
+        const item = {
+            label: categoria.categoria.nome_categoria,
+            subItems: []
+        };
 
-  //     categorias.forEach(categoria => {
-  //       categoria.produtos.forEach(produtos => {
+        categoria.produtos.forEach(produto => {
+            item.subItems.push({
+                label: produto.nome_produto,
+                link: `produtos/${produto.id}`
+            });
+        });
 
-  //       });
-  //     });
+        final.push(item);
+      });
 
-  //     CategoriasService.emitirCategoria.emit(categorias);
+      CategoriasService.emitirCategoria.emit(final);
 
-  //   });
-  // }
+    });
+  }
 }

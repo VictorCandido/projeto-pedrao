@@ -41,23 +41,34 @@ export class CategoriasService {
     });
   }
 
-  // getCategoriasProdutos(): any {
-  //   return new Promise((resolve, reject) => {
+  getCategoriasProdutos(): any {
+    return new Promise((resolve, reject) => {
 
-  //     this.getCategorias().subscribe(categorias => {
-  //       const categoriasProdutos: any[] = new Array();
+      this.getCategorias().subscribe(categorias => {
+        const categoriasProdutos: any[] = new Array();
 
-  //       categorias.forEach(async (element, index) => {
-  //         categoriasProdutos.push(element);
+        this.produtosService.getProdutos().subscribe(produtos => {
+          categorias.forEach((categoria, catIndex) => {
+            const produtosArr = new Array();
 
-  //         this.produtosService.getProdutosByCategoria(element.id).subscribe(produtos => {
-  //           categoriasProdutos[index].produtos = produtos;
-  //         });
-  //       });
+            produtos.forEach((produto, prodIndex) => {
+              if (produto.id_categoria === categoria.id) {
+                produtosArr.push(produto);
+              }
+            });
 
-  //       resolve(categoriasProdutos);
-  //     });
+            const element = {
+              categoria,
+              produtos: produtosArr
+            };
 
-  //   });
-  // }
+            categoriasProdutos.push(element);
+          });
+
+          resolve(categoriasProdutos);
+        });
+      });
+
+    });
+  }
 }

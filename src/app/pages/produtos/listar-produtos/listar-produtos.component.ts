@@ -1,3 +1,4 @@
+import { AppService } from './../../../app.service';
 import { ProdutosService } from './../produtos.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {
@@ -74,6 +75,7 @@ export class ListarProdutosComponent implements OnInit {
   constructor(
     private service: ProdutosService,
     private poNotification: PoNotificationService,
+    private appService: AppService
     ) {  }
 
   ngOnInit() {
@@ -166,6 +168,8 @@ export class ListarProdutosComponent implements OnInit {
         });
 
       }
+
+      this.appService.updateMenuCategorias();
     } else {
       this.config.message = 'Necessário preencher todos os campos.';
       this.poNotification.warning(this.config);
@@ -192,6 +196,7 @@ export class ListarProdutosComponent implements OnInit {
 
         this.subscription.unsubscribe();
         this.iniciaTable();
+        this.appService.updateMenuCategorias();
 
         this.config.message = 'Produto removido com sucesso.';
         this.poNotification.success(this.config);

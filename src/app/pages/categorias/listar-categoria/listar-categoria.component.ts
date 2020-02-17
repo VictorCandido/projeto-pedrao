@@ -1,3 +1,4 @@
+import { AppService } from './../../../app.service';
 import { CategoriasService } from './../categorias.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {
@@ -73,7 +74,8 @@ export class ListarCategoriaComponent implements OnInit {
 
   constructor(
     private poNotification: PoNotificationService,
-    private service: CategoriasService
+    private service: CategoriasService,
+    private appService: AppService
   ) {  }
 
   ngOnInit() {
@@ -151,7 +153,7 @@ export class ListarCategoriaComponent implements OnInit {
 
         this.service.updateCategoria({ id: this.idCategoria, nome_categoria: this.nomeCategoria }).subscribe(res => {
           if (res) {
-            this.service.updateMenuCategorias();
+            this.appService.updateMenuCategorias();
             this.iniciaTable();
 
             this.config.message = 'Alterado com sucesso!';
@@ -170,7 +172,7 @@ export class ListarCategoriaComponent implements OnInit {
 
         this.service.insertCategoria({ nome_categoria: this.nomeCategoria }).subscribe(res => {
           if (res) {
-            this.service.updateMenuCategorias();
+            this.appService.updateMenuCategorias();
             this.iniciaTable();
 
             this.config.message = 'Cadastrado com sucesso!';
@@ -200,7 +202,7 @@ export class ListarCategoriaComponent implements OnInit {
   private confirm_confirm() {
     this.service.deleteCategoria(this.categoriaSelecionada.id).subscribe(res => {
       if (res) {
-        this.service.updateMenuCategorias();
+        this.appService.updateMenuCategorias();
         this.subscription.unsubscribe();
         this.iniciaTable();
 

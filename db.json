@@ -1,8 +1,8 @@
 {
   "categorias": [
     {
-      "id": 2,
-      "nome_categoria": "CATEGORIA 2"
+      "nome_categoria": "CATEGORIA 2 - TESTE",
+      "id": 2
     },
     {
       "id": 3,
@@ -35,22 +35,10 @@
       "descricao": ""
     },
     {
-      "id": 5,
-      "id_categoria": 5,
-      "nome_produto": "PRODUTO 5",
-      "descricao": ""
-    },
-    {
       "id_categoria": 5,
       "nome_produto": "NOVO PRODUTO",
       "descricao": "TESTE DESCRICAO",
       "id": 6
-    },
-    {
-      "nome_produto": "TESTE",
-      "id_categoria": 5,
-      "descricao": "NOVO TESTE",
-      "id": 7
     }
   ]
 }

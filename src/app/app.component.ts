@@ -29,12 +29,6 @@ export class AppComponent {
       this.menus = categorias;
     });
 
-    this.categoriasService.getCategorias().subscribe(res => {
-      this.menus = res.map(element => {
-        return { label: element.nome_categoria, link: `categorias/${element.id}` };
-      });
-    });
-
-    // this.appService.updateMenuCategorias();
+    this.appService.updateMenuCategorias();
   }
 }
