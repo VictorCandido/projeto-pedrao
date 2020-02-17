@@ -1,44 +1,30 @@
 {
   "categorias": [
     {
-      "nome_categoria": "CATEGORIA 2 - TESTE",
-      "id": 2
-    },
-    {
-      "id": 3,
-      "nome_categoria": "CATEGORIA 3"
-    },
-    {
-      "id": 4,
-      "nome_categoria": "CATEGORIA 4"
-    },
-    {
-      "nome_categoria": "TESTE",
-      "id": 5
-    },
-    {
-      "nome_categoria": "NOVA CATEGORIA",
-      "id": 6
+      "nome_categoria": "Sapatos",
+      "id": 1
     }
   ],
   "produtos": [
     {
-      "id": 3,
-      "id_categoria": 3,
-      "nome_produto": "PRODUTO 3",
-      "descricao": ""
+      "id_categoria": 1,
+      "nome_produto": "Social",
+      "descricao": "Sapato Social",
+      "id": 1
     },
     {
-      "id": 4,
-      "id_categoria": 4,
-      "nome_produto": "PRODUTO 4",
-      "descricao": ""
+      "id_produto": "",
+      "id_categoria": 1,
+      "nome_produto": "Chuteira",
+      "descricao": "Chuteiras",
+      "id": 2
     },
     {
-      "id_categoria": 5,
-      "nome_produto": "NOVO PRODUTO",
-      "descricao": "TESTE DESCRICAO",
-      "id": 6
+      "id_produto": "",
+      "id_categoria": 1,
+      "nome_produto": "Nike",
+      "descricao": "Nike",
+      "id": 3
     }
   ]
 }
