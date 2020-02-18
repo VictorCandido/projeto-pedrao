@@ -7,24 +7,13 @@
   ],
   "produtos": [
     {
+      "id": 1,
       "id_categoria": 1,
       "nome_produto": "Social",
       "descricao": "Sapato Social",
-      "id": 1
-    },
-    {
-      "id_produto": "",
-      "id_categoria": 1,
-      "nome_produto": "Chuteira",
-      "descricao": "Chuteiras",
-      "id": 2
-    },
-    {
-      "id_produto": "",
-      "id_categoria": 1,
-      "nome_produto": "Nike",
-      "descricao": "Nike",
-      "id": 3
+      "preco": 150.00,
+      "quantidade": 10,
+      "imagemUrl": ""
     }
   ]
 }

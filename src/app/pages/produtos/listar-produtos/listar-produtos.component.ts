@@ -216,7 +216,7 @@ export class ListarProdutosComponent implements OnInit {
     this.service.camposValues(
       this.produtoSelecionado.id,
       this.produtoSelecionado.nome_produto,
-      this.produtoSelecionado.categoria,
+      this.produtoSelecionado.id_categoria,
       this.produtoSelecionado.descricao
     );
 
