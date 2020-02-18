@@ -3,6 +3,10 @@
     {
       "nome_categoria": "Sapatos",
       "id": 1
+    },
+    {
+      "nome_categoria": "Teste",
+      "id": 2
     }
   ],
   "produtos": [
@@ -13,9 +17,8 @@
       "id": 1
     },
     {
-      "id_produto": "",
-      "id_categoria": 1,
       "nome_produto": "Chuteira",
+      "id_categoria": 2,
       "descricao": "Chuteiras",
       "id": 2
     },
