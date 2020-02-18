@@ -14,10 +14,14 @@ import {
 export class CadastrarProdutosComponent implements OnInit {
   public fields: Array<PoDynamicFormField>;
   public categorias: Array<PoSelectOption> = [];
+  public anexarLoading: boolean;
   public idProduto: string;
   public nomeProduto: string;
   public categoria: string;
   public descricao: string;
+  public image: string;
+  public preco: number;
+  public quantid: number;
 
   @Output() form = new EventEmitter();
 
@@ -27,12 +31,15 @@ export class CadastrarProdutosComponent implements OnInit {
 
   ngOnInit() {
     this.getCategoriasOptions();
+
     ProdutosService.emitirProduto.subscribe(res => {
       this.idProduto = res.idProduto;
       this.nomeProduto = res.nomeProduto;
       this.categoria = res.categoria;
       this.descricao = res.descricao;
     });
+
+    this.anexarLoading = false;
   }
 
   getCategoriasOptions() {
@@ -52,5 +59,9 @@ export class CadastrarProdutosComponent implements OnInit {
       categoria: this.categoria,
       descricao: this.descricao
     });
+  }
+
+  anexar() {
+
   }
 }

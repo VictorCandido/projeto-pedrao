@@ -33,6 +33,26 @@
   </div>
 </div>
 
+<div class="po-row">
+  <div class="po-md-6">
+    <po-input
+      p-label="Preço"
+      name="preco"
+      [(ngModel)]="preco"
+      (p-change)="enviaDados()"
+    ></po-input>
+  </div>
+
+  <div class="po-md-6">
+    <po-input
+      p-label="Quantidade"
+      name="quantid"
+      [(ngModel)]="quantid"
+      (p-change)="enviaDados()"
+    ></po-input>
+  </div>
+</div>
+
 <!-- DESCRICAO -->
 <div class="po-row">
   <div class="po-md-12">
@@ -42,5 +62,26 @@
       [(ngModel)]="descricao"
       (p-change)="enviaDados()"
     ></po-textarea>
+  </div>
+</div>
+
+<div class="po-row">
+  <div class="po-md-8">
+    <po-input
+      p-readonly=true
+      name="image"
+      [(ngModel)]="image"
+      (p-change)="enviaDados()"
+    ></po-input>
+  </div>
+
+  <div class="po-md-4" style="margin-top: 7px;">
+    <po-button style="width: 100%;"
+      (p-click)="anexar()"
+      p-icon="po-icon-upload"
+      p-label="Anexar Imagem"
+      [p-loading]="anexarLoading"
+      p-type="primary" >
+  </po-button>
   </div>
 </div>
