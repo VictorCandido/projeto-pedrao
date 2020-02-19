@@ -3,6 +3,10 @@
     {
       "nome_categoria": "Sapatos",
       "id": 1
+    },
+    {
+      "nome_categoria": "Roupas",
+      "id": 2
     }
   ],
   "produtos": [
@@ -20,6 +24,25 @@
       "id_categoria": 1,
       "descricao": "Tênis Nike preto, branco ou verde. \nBons para corridas.",
       "id": 2
+    },
+    {
+      "id_categoria": 2,
+      "nome_produto": "Camisa V",
+      "descricao": "Camisa gola V",
+      "id": 3
+    },
+    {
+      "id_categoria": 2,
+      "nome_produto": "Camisa Polo",
+      "descricao": "Camisa Polo",
+      "id": 4
+    },
+    {
+      "id_produto": "",
+      "id_categoria": 2,
+      "nome_produto": "Calça Jeans",
+      "descricao": "Calça Jeans",
+      "id": 5
     }
   ]
 }
