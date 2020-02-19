@@ -14,6 +14,10 @@ export class ProdutosService {
     private http: HttpClient
   ) { }
 
+  getProduto(id): any {
+    return this.http.get(`${this.api}/${id}`);
+  }
+
   getProdutos(): any {
     return this.http.get(this.api);
   }

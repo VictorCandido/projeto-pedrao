@@ -7,10 +7,11 @@ import { ProdutosRoutingModule } from './produtos-routing.module';
 import { ListarProdutosComponent } from './listar-produtos/listar-produtos.component';
 import { CadastrarProdutosComponent } from './cadastrar-produtos/cadastrar-produtos.component';
 import { FormsModule } from '@angular/forms';
+import { ExibirProdutoComponent } from './exibir-produto/exibir-produto.component';
 
 
 @NgModule({
-  declarations: [ListarProdutosComponent, CadastrarProdutosComponent],
+  declarations: [ListarProdutosComponent, CadastrarProdutosComponent, ExibirProdutoComponent],
   imports: [
     CommonModule,
     ProdutosRoutingModule,

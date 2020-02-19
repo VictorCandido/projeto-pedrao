@@ -11,9 +11,15 @@
       "id_categoria": 1,
       "nome_produto": "Social",
       "descricao": "Sapato Social",
-      "preco": 150.00,
+      "preco": 150,
       "quantidade": 10,
       "imagemUrl": ""
+    },
+    {
+      "nome_produto": "Tenis Nike",
+      "id_categoria": 1,
+      "descricao": "Tênis Nike preto, branco ou verde. \nBons para corridas.",
+      "id": 2
     }
   ]
 }
