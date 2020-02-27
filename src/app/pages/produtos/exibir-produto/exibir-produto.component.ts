@@ -31,11 +31,12 @@ export class ExibirProdutoComponent implements OnInit {
     this.title = 'Produto';
     this.produtoId = this.route.snapshot.paramMap.get('id');
 
-    this.service.getProduto(this.produtoId).subscribe(res => {
-      this.produto = res;
+    this.route.params.subscribe(params => {
+      this.produtoId = params.id;
 
-      console.log(this.produto);
+      this.service.getProduto(this.produtoId).subscribe(res => {
+        this.produto = res;
+      });
     });
   }
-
 }
