@@ -60,8 +60,4 @@ export class CadastrarProdutosComponent implements OnInit {
       descricao: this.descricao
     });
   }
-
-  anexar() {
-
-  }
 }
