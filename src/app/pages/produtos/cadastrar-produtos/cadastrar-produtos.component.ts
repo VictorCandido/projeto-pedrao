@@ -37,6 +37,8 @@ export class CadastrarProdutosComponent implements OnInit {
       this.nomeProduto = res.nomeProduto;
       this.categoria = res.categoria;
       this.descricao = res.descricao;
+      this.quantid = res.quantid;
+      this.preco = res.preco;
     });
 
     this.anexarLoading = false;
@@ -57,7 +59,9 @@ export class CadastrarProdutosComponent implements OnInit {
       idProduto: this.idProduto,
       nomeProduto: this.nomeProduto,
       categoria: this.categoria,
-      descricao: this.descricao
+      descricao: this.descricao,
+      preco: this.preco,
+      quantidade: this.quantid
     });
   }
 }

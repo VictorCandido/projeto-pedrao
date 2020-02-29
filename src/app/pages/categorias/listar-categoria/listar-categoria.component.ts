@@ -56,15 +56,15 @@ export class ListarCategoriaComponent implements OnInit {
     label: 'Confirmar',
   };
 
+  public readonly confirmConfirm: PoModalAction = {
+    action: () => this.confirm_confirm(),
+    label: 'Confirmar',
+  };
+
   public readonly closeConfirm: PoModalAction = {
     action: () => this.close_confirm(),
     label: 'Cancelar',
     danger: true
-  };
-
-  public readonly confirmConfirm: PoModalAction = {
-    action: () => this.confirm_confirm(),
-    label: 'Confirmar',
   };
 
   @ViewChild(PoTableComponent, { static: true }) private poTable: PoTableComponent;

@@ -2,11 +2,10 @@
   [p-title]="title"
 >
 
-  <po-widget
-    [p-title]="produto.nome_produto"
-  >
+  <po-widget>
+    <div class="po-font-title po-text-center">{{produto.nome_produto}}</div>
     <div class="po-font-subtitle po-text-center">{{produto.descricao}}</div>
-    <div class="po-text-center">R$ {{produto.valor}}</div>
+    <div class="po-text-center">R$ {{produto.preco}}</div>
     <div class="po-text-center">Restando: {{produto.quantidade}}</div>
   </po-widget>
 

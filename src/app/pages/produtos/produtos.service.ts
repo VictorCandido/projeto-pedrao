@@ -34,7 +34,9 @@ export class ProdutosService {
     return this.http.put(`${this.api}/${produto.id_produto}`, {
       nome_produto: produto.nome_produto,
       id_categoria: produto.id_categoria,
-      descricao: produto.descricao
+      descricao: produto.descricao,
+      quantidade: produto.quantidade,
+      preco: produto.preco
     });
   }
 
@@ -42,7 +44,7 @@ export class ProdutosService {
     return this.http.delete(`${this.api}/${id}`);
   }
 
-  camposValues(idProduto: string, nomeProduto: string, categoria: string, descricao: string) {
-    ProdutosService.emitirProduto.emit({ idProduto, nomeProduto, categoria, descricao });
+  camposValues(idProduto: string, nomeProduto: string, categoria: string, descricao: string, quantid: number, preco: number) {
+    ProdutosService.emitirProduto.emit({ idProduto, nomeProduto, categoria, descricao, quantid, preco });
   }
 }

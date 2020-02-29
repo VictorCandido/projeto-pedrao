@@ -43,6 +43,8 @@ export class ListarProdutosComponent implements OnInit {
     { label: 'ID', property: 'id' },
     { label: 'Categoria', property: 'id_categoria' },
     { label: 'Nome do produto', property: 'nome_produto' },
+    { label: 'Quantidade', property: 'quantidade' },
+    { label: 'Preço', property: 'preco' },
     { label: 'Descrição do produto', property: 'descricao' },
   ];
 
@@ -89,7 +91,9 @@ export class ListarProdutosComponent implements OnInit {
       id: '',
       id_categoria: '',
       nome_produto: '',
-      descricao: ''
+      descricao: '',
+      preco: 0,
+      quantidade: 0
     };
 
     this.actions[0].disabled = false;
@@ -109,7 +113,9 @@ export class ListarProdutosComponent implements OnInit {
         id: '',
         id_categoria: '',
         nome_produto: '',
-        descricao: ''
+        descricao: '',
+        preco: 0,
+        quantidade: 0
       };
 
       this.actions[0].disabled = false;
@@ -123,12 +129,14 @@ export class ListarProdutosComponent implements OnInit {
   }
 
   confirm_novo() {
-    if (this.dados && this.dados.nomeProduto && this.dados.categoria && this.dados.descricao) {
+    if (this.dados && this.dados.nomeProduto && this.dados.categoria && this.dados.quantidade) {
       const param = {
         id_produto: this.dados.idProduto,
         id_categoria: this.dados.categoria,
         nome_produto: this.dados.nomeProduto,
-        descricao: this.dados.descricao
+        descricao: this.dados.descricao,
+        preco: this.dados.preco,
+        quantidade: this.dados.quantidade
       };
 
       if (this.editMode) {
@@ -138,7 +146,7 @@ export class ListarProdutosComponent implements OnInit {
             this.subscription.unsubscribe();
             this.iniciaTable();
 
-            this.service.camposValues('', '', '', '');
+            this.service.camposValues('', '', '', '', 0, 0);
             this.poModalCadastrar.close();
 
             this.config.message = 'Produto atualizado com sucesso.';
@@ -156,7 +164,7 @@ export class ListarProdutosComponent implements OnInit {
             this.subscription.unsubscribe();
             this.iniciaTable();
 
-            this.service.camposValues('', '', '', '');
+            this.service.camposValues('', '', '', '', 0, 0);
             this.poModalCadastrar.close();
 
             this.config.message = 'Produto cadastrado com sucesso.';
@@ -217,7 +225,9 @@ export class ListarProdutosComponent implements OnInit {
       this.produtoSelecionado.id,
       this.produtoSelecionado.nome_produto,
       this.produtoSelecionado.id_categoria,
-      this.produtoSelecionado.descricao
+      this.produtoSelecionado.descricao,
+      this.produtoSelecionado.quantidade,
+      this.produtoSelecionado.preco
     );
 
     this.editMode = true;

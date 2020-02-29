@@ -66,18 +66,9 @@
 </div>
 
 <div class="po-row">
-  <div class="po-md-9">
-    <po-input
-      p-readonly=true
-      p-label="Anexo"
-      name="image"
-      [(ngModel)]="image"
-      (p-change)="enviaDados()"
-    ></po-input>
-  </div>
-
-  <div class="po-md-3" style="margin-top: 7px;">
+  <div class="po-md-12">
     <po-upload
+      p-drag-drop=true
       p-hide-send-button=true
       p-label="Anexar Imagem"
       p-url="/"
