@@ -36,7 +36,8 @@ export class ProdutosService {
       id_categoria: produto.id_categoria,
       descricao: produto.descricao,
       quantidade: produto.quantidade,
-      preco: produto.preco
+      preco: produto.preco,
+      files: produto.files
     });
   }
 
@@ -44,7 +45,14 @@ export class ProdutosService {
     return this.http.delete(`${this.api}/${id}`);
   }
 
-  camposValues(idProduto: string, nomeProduto: string, categoria: string, descricao: string, quantid: number, preco: number) {
+  camposValues(
+    idProduto: string,
+    nomeProduto: string,
+    categoria: string,
+    descricao: string,
+    quantid: number,
+    preco: number
+  ) {
     ProdutosService.emitirProduto.emit({ idProduto, nomeProduto, categoria, descricao, quantid, preco });
   }
 }
