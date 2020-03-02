@@ -1,26 +1,104 @@
 {
   "categorias": [
     {
-      "nome_categoria": "Teste",
+      "nome_categoria": "Camisetas",
       "id": 1
+    },
+    {
+      "nome_categoria": "Camisas",
+      "id": 2
+    },
+    {
+      "nome_categoria": "Bermudas",
+      "id": 3
+    },
+    {
+      "nome_categoria": "Calças",
+      "id": 4
+    },
+    {
+      "nome_categoria": "Calça Jeans",
+      "id": 5
+    },
+    {
+      "nome_categoria": "Jaquetas",
+      "id": 6
+    },
+    {
+      "nome_categoria": "Suéters",
+      "id": 7
     }
   ],
   "produtos": [
     {
       "id_categoria": 1,
-      "nome_produto": "Teste",
-      "descricao": "teste",
-      "preco": "111",
-      "quantidade": "111",
+      "nome_produto": "Calvin Klein Jeans",
+      "descricao": "Camiseta Calvin Klein Jeans Lettering Preta",
+      "preco": "129,00",
+      "quantidade": "10",
       "id": 1
     },
     {
+      "id_produto": "",
       "id_categoria": 1,
-      "nome_produto": "ok",
-      "descricao": "ok",
-      "preco": "1",
-      "quantidade": "1",
+      "nome_produto": "Mr Kitsch",
+      "descricao": "Camiseta Mr Kitsch Logo Preta/Grafite",
+      "preco": "39.99",
+      "quantidade": "10",
       "id": 2
+    },
+    {
+      "nome_produto": "Fechar Kit 2pçs Camisetas Calvin Klein Underwear Gola Redonda Preta/Branca - Marca Calvin Klein Underwear Calvin Klein Underwear",
+      "id_categoria": 1,
+      "descricao": "Kit 2pçs Camisetas Calvin Klein Underwear",
+      "quantidade": "10",
+      "preco": "94.99",
+      "id": 3
+    },
+    {
+      "id_produto": "",
+      "id_categoria": 1,
+      "nome_produto": "Polo Wear",
+      "descricao": "Camiseta Polo Wear Bordada Azul",
+      "preco": "24.99",
+      "quantidade": "10",
+      "id": 4
+    },
+    {
+      "id_produto": "",
+      "id_categoria": 2,
+      "nome_produto": "Fórmula Retrô",
+      "descricao": "Camisa Polo Fórmula Retrô Fusca Herbie Bege",
+      "preco": "99.90",
+      "quantidade": "10",
+      "id": 5
+    },
+    {
+      "id_produto": "",
+      "id_categoria": 2,
+      "nome_produto": "Lacoste",
+      "descricao": "Camisa Lacoste Regular Bolso Cinza",
+      "preco": "269.99",
+      "quantidade": "10",
+      "id": 6
+    },
+    {
+      "id_produto": "",
+      "id_categoria": 2,
+      "nome_produto": "GAP",
+      "descricao": "Camisa GAP Reta Xadrez Azul-Marinho/Off-White",
+      "preco": 0,
+      "quantidade": "10",
+      "id": 7
+    },
+    {
+      "id_produto": "",
+      "id_categoria": 2,
+      "nome_produto": "Reserva",
+      "descricao": "Camisa Reserva Reta Xadrez Rosa/Branca",
+      "preco": 0,
+      "quantidade": "10",
+      "id": 8
     }
   ]
 }
